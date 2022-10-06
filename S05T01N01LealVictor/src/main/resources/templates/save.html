@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>CRUC Sucursal</title>
+ 
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+ th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+ <div class="container">
+  <br>
+  <h2>
+Agregar Sucursal</h2>
+<form action="#" th:action="@{/sucursal/save}" th:object="${sucursal}"
+   method="post">
+   <div class="form-group">
+    <label for="nombre">Nombre</label> <input type="text"
+     class="form-control" id="nomSucursal" th:field="*{nomSucursal}" name="nomSucursal">
+   </div>
+<input type="hidden" th:field="*{pk_SucursalID}" name="ID" id="pk_SucursalID">
+   <div class="form-group">
+    <label for="nombre">País</label> <input type="text"
+     class="form-control" id="paisSucursal" th:field="*{paisSucursal}"
+     name="paisSucursal">
+   </div>
+
+<button type="submit" class="btn btn-success">Guardar</button>
+  </form>
+</div>
+</body>
+</html>

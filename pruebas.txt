@@ -1,0 +1,38 @@
+                <td>
+                    <a th:href="/@{"/edit/" + ${sucursal.pk_SucursalID}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="/@{'/delete/'+ ${sucursal.pk_SucursalID}}">Delete</a>
+                </td>
+
+
+
+
+
+package cat.itacademy.barcelonactiva.Leal.Victor.s05.t01.n01.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import cat.itacademy.barcelonactiva.Leal.Victor.s05.t01.n01.model.domain.Sucursal;
+import cat.itacademy.barcelonactiva.Leal.Victor.s05.t01.n01.model.services.SucursalService;
+
+@Controller
+public class IndexController {
+	
+	@Autowired
+	private SucursalService sucursalService;
+	
+	@GetMapping("/")
+	@ResponseBody
+	public String index(Model model) {
+	    List<Sucursal> sucursales = sucursalService.getAllSucursals();
+	    model.addAttribute("mensaje","hola desde thymeleaf");
+	    model.addAttribute("sucursales", sucursales);
+		return "index";
+	}
+}

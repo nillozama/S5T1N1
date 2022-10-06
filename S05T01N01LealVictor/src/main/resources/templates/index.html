@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>CRUC Sucursal</title>
+ 
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+ th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+ <div class="container">
+  <br>
+  <h2 th:if="${sucursalesDTO.isEmpty()}">
+No hay sucursales</h2>
+<div th:if="${!sucursalesDTO.isEmpty()}">
+  <h2>
+LISTADO DE SUCURSALES</h2>
+<br>
+   <table class="table">
+    <thead>
+<tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>País</th>
+      <th>Perteneciente a UE</th>
+	  <th>Editar</th>
+      <th>Eliminar</th>
+     </tr>
+</thead>
+    <tbody>
+<tr th:each="sucursal : ${sucursalesDTO}">
+      <td th:text="${sucursal.pk_SucursalID}"></td>
+      <td th:text="${sucursal.nomSucursal}"></td>
+      <td th:text="${sucursal.paisSucursal}"></td>
+      <td th:text="${sucursal.tipusSucursal}"></td>
+      <td><a class="btn btn-info" th:href="@{/sucursal/edit/{id}(id=${sucursal.pk_SucursalID})}">Editar</a></td>
+      <td><a class="btn btn-danger" th:href="@{/sucursal/delete2/{id}(id=${sucursal.pk_SucursalID})}">Eliminar</a></td>
+
+      </tr> 
+     </tbody>
+   </table>
+</div>
+<br>
+  <div>
+   <a href="/sucursal/new" class="btn btn-primary">Agregar</a>
+  </div>
+</div>
+</body>
+</html>
